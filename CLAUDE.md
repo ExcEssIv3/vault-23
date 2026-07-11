@@ -12,7 +12,7 @@ Fallout: New Vegas mod concept — design documents only, no game assets or code
 - `epilogues.md` — post-credits slideshow per ending
 - `open-questions.md` — open questions / next to flesh out
 - `archive/` — older full-draft snapshots (outline-1 through outline-5), kept for history
-- `dossier.html` — single-file, dependency-free HTML rendering of the outline (styled as a Vault-Tec case file). Opens directly in any browser, no build step; also suitable for GitHub Pages.
+- `index.html` — single-file, dependency-free HTML rendering of the outline (styled as a Vault-Tec case file). Opens directly in any browser, no build step; also served live via GitHub Pages at the repo root.
 
 ## Conventions
 
