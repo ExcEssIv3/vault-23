@@ -14,4 +14,6 @@ Naming convention: eldest son of the eldest son has always been named George, ma
 
 **Clyde**: the "hero" the vault sent out before the player arrived. Sent to find reactor parts needed to reseal the leak, with no real idea what he's looking for or how to find it — rants to the player about the impossible, humiliating position he was put in. Not brave, not competent. Reached Vault 21, became infatuated with Sarah, and — out of fear of the wasteland and social cowardice — never left and never approached her. Found seated in Vault 21's dining room, a talkable NPC fixture requiring no quest marker.
 
+**Teresa**: Silas's assistant. Suspicious of him but not forthcoming by default — a high enough Speech/Barter check gets her to reveal he keeps a locked safe in his office, or the player can earn the same information by completing a quest for her instead. Introduced in the beat right after the ghoul incident, when the player goes to confront Silas about the "autopsy" and gets stonewalled. See [story-beats.md §3.6](story-beats.md#36-silass-office--teresa).
+
 **Player-facing NPCs for trust-building**: the doctor, whoever runs the armory, someone in the kitchen — see [story-beats.md](story-beats.md#32-arrival--earning-trust-inside-vault-23).

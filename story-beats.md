@@ -22,7 +22,7 @@ Cast referenced below is detailed in [characters.md](characters.md); background 
 - Overseer asks the player to help with the reactor regardless of the argument's outcome in the moment. Likely next step: the son escorts the player to the reactor, giving a one-on-one window to start building that relationship.
 
 ## 3.4 Investigation with the son
-- **Everything from here through §3.6 is optional.** The player can instead just repair the reactor, collect payment from the Overseer, and leave — the errand resolves cleanly as a simple fetch/repair quest for a player who doesn't engage further. Investigating is something the player chooses to pursue, not something forced on them.
+- **Everything from here through §3.7 is optional.** The player can instead just repair the reactor, collect payment from the Overseer, and leave — the errand resolves cleanly as a simple fetch/repair quest for a player who doesn't engage further. Investigating is something the player chooses to pursue, not something forced on them.
 - On entering the reactor room, the son immediately says "Something is wrong here..." — an unprompted line, not gated behind talking to him.
 - Talking to him gets him to voice it further: something feels off about the leak, and he wants to investigate further. He doesn't have the standing or expertise to act on it alone.
 - **Skill check (Perception/Science/Repair)**: high enough, and the player identifies immediately that the reactor's condition isn't ordinary wear — it's been deliberately tampered with.
@@ -36,17 +36,37 @@ Cast referenced below is detailed in [characters.md](characters.md); background 
 - Player can gather proof of the real mechanism behind "prenatal care," which will eventually be what turns the son from passive dissenter into someone willing to act — and what eventually forces him to learn his own origin.
 
 ## 3.5 The ghoul incident (escalation, not inciting incident)
-- Triggers directly out of the housing-unit findings in §3.4: while the son is still alarmed, reacting to the pattern with the player in the eating space, the incident breaks out.
-- A pregnant woman, previously introduced to the player, complains of feeling unwell during/after a prenatal visit, then suddenly ghoulifies (green flash). She attacks nearby vault dwellers, killing one or two, before vault enforcers put her down.
+- Triggers directly out of the housing-unit findings in §3.4: the player has just returned to George X in the eating space with the news that radiation was found across the housing units, and delivers those details to him.
+- Staging: the player and George X are in a separate room adjacent to the kitchen, watching what happens through a window rather than being in the room themselves — not a forced-encounter combat beat, an observed one.
+- A pregnant woman, previously introduced to the player, complains of feeling unwell during/after a prenatal visit, then suddenly ghoulifies (green flash) in the kitchen. She attacks nearby vault dwellers, killing one or two, before being put down.
 - No one in the vault has ever seen a ghoul before — only the Courier recognizes what happened, repositioning the player from outsider-being-shown-around to the only person who understands the real stakes.
-- Player gets a dialogue choice: name what they saw aloud (goes public fast) or stay quiet (private leverage to use later).
-- The doctor removes the body "to run tests" — reads as normal to the family, reads as evidence-control/cover-up in hindsight. Narrative hook for wanting access to his clinic/lab.
+- Immediately after, George X tells the player to wait there — he doesn't think an outsider stepping in will help the situation — and leaves. Fade to black.
+- On return, George X explains that Silas has already removed the body "to run an autopsy," and asks the player directly if they know what happened.
+- Player's dialogue choice sits here, specifically in response to George X's question: tell him plainly that this was a ghoulification, something that happens out in the wasteland, or keep that knowledge to himself.
+- The doctor removing the body for "an autopsy" reads as normal to the family in the moment, reads as evidence-control/cover-up in hindsight — narrative hook for wanting access to his clinic/lab later.
 - Aftermath: the family needs a fast, comforting explanation (bad luck, a curse, "she was always sickly") — quiet character work for the Overseer's founder-mythology language.
-- Staging: likely a forced-encounter beat (locked room, scripted NPC combat trigger) rather than a true non-interactive cutscene.
-- Open thread: who actually puts her down (Overseer, doctor, or son) — each implies a different character beat, especially if it's the son's radicalizing moment.
+- Who puts her down: handled by vault officers/enforcers, not the player, the son, the Overseer, or the doctor — consistent with the player/George X watching from outside the room rather than participating.
 
-## 3.6 Confrontation and resolution
-- Investigation culminates in a confrontation where the son learns the truth, including his own origin as an early success of the program.
-- Player's accumulated evidence/relationships determine which ending path is available/taken (see [endings.md](endings.md)).
+## 3.6 Silas's office & Teresa
+- Obvious next step after the ghoul incident: the player goes to confront Silas directly about the "autopsy." He's evasive, as expected — no information gained from him directly.
+- Introduces **Teresa**, Silas's assistant. She tells the player she's suspicious of Silas.
+- With a high enough Speech/Barter check, the player can convince her to say more: Silas has a safe in his office he won't let anyone open.
+- If the player can't pass that check, there's a fallback: a quest for Teresa, tradeable for the same information about the safe.
+- Silas's office door is always locked, but standing near it registers radiation on approach — enough to tell the player something is off even without convincing Teresa or doing her quest, so no one is hard-blocked from noticing.
+- Inside the office once opened: a large stock of radiation medication (RadX, RadAway). Inside the safe specifically: irradiated material, a syringe, notes documenting the experiments, and a note from the Overseer himself — the physical proof of the program's real mechanism, and the piece that makes clear the Overseer isn't just aware but directly involved, not merely turning a blind eye to Silas.
+- Once the safe is opened, the quest updates with **"Bring the proof of what's happening to George X"** and **"(Optional) Bring the proof to the Overseer."** Taking it to George X is the critical path into §3.7.
+- Taking it to the Overseer first is optional and doesn't replace §3.7: he explains the whole program in detail (since he already knows what the proof contains) and asks the player to keep it to themselves. The player can still go on to bring the same information to George X afterward, picking back up on his side of the questline. *(Parked for now — how this optional conversation interacts with the ending paths still needs work.)*
+- With the proof in hand, the player isn't required to act on it at all. Two paths out of this beat skip §3.7's confrontation entirely:
+  - **Just walk away** — repair the reactor, collect the Overseer's reward, and leave, proof unused (maps to ending A0/A1 territory).
+  - **The mother, quietly** — a less obvious path: go to Rebecca directly and convince her of what's happening, so she's the one who convinces the Overseer to end the trials (maps to ending A2). This doesn't route through George X or a confrontation scene at all — it's a separate, quieter resolution available once the player has the proof.
+
+## 3.7 Confrontation and resolution
+- Triggered by bringing the proof to George X in §3.6: he wants to confront the Overseer directly and asks the player to meet him in the Overseer's office. From this point, the questline no longer allows walking away or the quiet mother path unaddressed — the confrontation itself is unavoidable once triggered.
+- The player enters the office mid-argument between father and son:
+  - George X argues the program is wrong and can never work.
+  - The Overseer: "It will work!" — X: "How do you know?" — the Overseer: "Because that's how you were born!" This is the moment George X learns his own origin.
+  - The Overseer refuses to stop the trials, and refuses to let outsiders into the vault — reiterating it isn't safe, not backing down on either point.
+- After witnessing this, the player can still pursue the same resolutions available before (going to the mother, or siding with the Overseer as-is), or now side with George X and back him in overthrowing the Overseer — this is where the B-branch endings (B1/B2/B3) actually become available, now that the son has both the truth and a reason to act on it.
+- Player's accumulated evidence/relationships determine which specific ending sub-variant is available/taken (see [endings.md](endings.md)).
 
 **Exit mechanic**: under normal circumstances, the player can only leave the vault by talking to the Overseer — he's the one who provides the exit passcode. If the player kills him instead, they can loot the passcode off his body, but this turns the rest of the vault hostile toward the player. If the player leaves anyway after that, a voice comes over the intercom just outside the vault door, announcing that the vault is locking itself and will never open again. See [endings.md](endings.md) for how this plays into the violence outcomes.

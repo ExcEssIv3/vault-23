@@ -1,6 +1,6 @@
 # Vault 23 — Endings
 
-Follows from the confrontation in [story-beats.md](story-beats.md#36-confrontation-and-resolution). Epilogue slides for each path are in [epilogues.md](epilogues.md).
+Follows from the confrontation in [story-beats.md](story-beats.md#37-confrontation-and-resolution). Epilogue slides for each path are in [epilogues.md](epilogues.md).
 
 No single "good" ending — each path is a real trade-off, in keeping with NV's approach (NCR/Legion/House/Independent all costly in different ways). Skill investment changes *how* an ending is reached and what's learned along the way, not whether it's a clean win. Everything collapses into two root outcomes — the Overseer keeps power, or the son takes it — plus one separate, extreme root branch.
 
@@ -20,7 +20,7 @@ Explicitly rejected: an "expose everything to the vault population and let it er
 The Courier rigs the reactor to explode outright. No sub-variants — single, final outcome: nothing left of the vault but a hole in the ground. Gating still to be determined.
 
 ## D. Violence outcomes (separate from A/B/C)
-Player-driven killing sits outside the political resolutions above — it isn't a vote in the succession conflict, it's opting out of that conflict entirely. See the exit mechanic in [story-beats.md §3.6](story-beats.md#36-confrontation-and-resolution): leaving normally requires talking to the Overseer for the exit passcode.
+Player-driven killing sits outside the political resolutions above — it isn't a vote in the succession conflict, it's opting out of that conflict entirely. See the exit mechanic in [story-beats.md §3.7](story-beats.md#37-confrontation-and-resolution): leaving normally requires talking to the Overseer for the exit passcode.
 
 1. **Kill everyone in the vault** — no succession, no negotiation, nothing left to resolve. The vault lies dormant, never to be opened again.
 2. **Kill the Overseer, then leave** — distinct from B1: B1 kills the father specifically to install the son as the new Overseer; this is killing him with no resolution of who leads next. The player loots the exit passcode off his body instead of receiving it, which turns the rest of the vault hostile. Leaving afterward triggers the intercom warning that the vault is locking itself permanently.

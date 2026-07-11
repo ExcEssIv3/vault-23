@@ -7,7 +7,7 @@ Fallout: New Vegas mod concept — design documents only, no game assets or code
 - `outline-index.md` — start here; links to every topic file below
 - `lore.md` — premise, the twist, cover story, succession rule
 - `characters.md` — the Overseer, the son, the mother, the doctor, Clyde
-- `story-beats.md` — chronological story beats (3.1–3.6)
+- `story-beats.md` — chronological story beats (3.1–3.7)
 - `endings.md` — ending paths (A/B/C/D)
 - `epilogues.md` — post-credits slideshow per ending
 - `open-questions.md` — open questions / next to flesh out
