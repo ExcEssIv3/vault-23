@@ -1,0 +1,617 @@
+<title>Vault 23 — Case File</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --paper: #ded8c3;
+    --paper-raised: #e8e3d1;
+    --ink: #26261f;
+    --ink-dim: #5b5847;
+    --rule: #b9b193;
+    --stamp-red: #9c3226;
+    --seal-teal: #1f4d54;
+    --tab-amber: #a9781f;
+    --tag-a: #1f4d54;
+    --tag-b: #a9781f;
+    --tag-c: #9c3226;
+    --tag-d: #5b5847;
+    --focus: #1f4d54;
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #0c0f0a;
+    --paper-raised: #12160f;
+    --ink: #c9dcc4;
+    --ink-dim: #7c9078;
+    --rule: #2b3626;
+    --stamp-red: #d97a63;
+    --seal-teal: #6fbcae;
+    --tab-amber: #e0b24a;
+    --tag-a: #6fbcae;
+    --tag-b: #e0b24a;
+    --tag-c: #d97a63;
+    --tag-d: #7c9078;
+    --focus: #6fbcae;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0c0f0a;
+      --paper-raised: #12160f;
+      --ink: #c9dcc4;
+      --ink-dim: #7c9078;
+      --rule: #2b3626;
+      --stamp-red: #d97a63;
+      --seal-teal: #6fbcae;
+      --tab-amber: #e0b24a;
+      --tag-a: #6fbcae;
+      --tag-b: #e0b24a;
+      --tag-c: #d97a63;
+      --tag-d: #7c9078;
+      --focus: #6fbcae;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Courier New", Courier, ui-monospace, monospace;
+    font-size: 15px;
+    line-height: 1.55;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  ::selection { background: var(--seal-teal); color: var(--paper); }
+
+  a { color: var(--seal-teal); }
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .shell {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 40px) 80px;
+  }
+
+  /* ---- Cover ---- */
+  .cover {
+    padding: 48px 0 28px;
+    border-bottom: 3px double var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  .cover-meta div + div { margin-top: 3px; }
+
+  .stamp {
+    border: 3px solid var(--stamp-red);
+    color: var(--stamp-red);
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 8px 14px;
+    transform: rotate(-3deg);
+    white-space: nowrap;
+    border-radius: 2px;
+    opacity: 0.9;
+  }
+
+  h1.title {
+    font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: clamp(34px, 6vw, 56px);
+    line-height: 1.02;
+    margin: 22px 0 6px;
+    text-wrap: balance;
+  }
+
+  .subtitle {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 13px;
+    margin: 0;
+  }
+
+  .vault-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border: 3px solid var(--seal-teal);
+    border-radius: 50%;
+    color: var(--seal-teal);
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  /* ---- Nav tabs ---- */
+  nav.tabs {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    gap: 2px;
+    flex-wrap: wrap;
+    background: var(--paper);
+    padding: 14px 0;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  nav.tabs a {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--ink-dim);
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-bottom: none;
+    padding: 8px 14px 7px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  nav.tabs a:hover { color: var(--ink); border-color: var(--tab-amber); }
+
+  /* ---- Sections ---- */
+  section.file {
+    padding: 34px 0;
+    border-bottom: 1px solid var(--rule);
+    scroll-margin-top: 64px;
+  }
+
+  section.file:last-of-type { border-bottom: none; }
+
+  .file-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 6px;
+  }
+
+  .file-num {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    color: var(--tab-amber);
+    letter-spacing: 0.1em;
+  }
+
+  h2.file-title {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: clamp(22px, 3.6vw, 30px);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .file-dek {
+    color: var(--ink-dim);
+    font-size: 13px;
+    margin: 4px 0 20px;
+    max-width: 62ch;
+  }
+
+  p { max-width: 68ch; }
+
+  /* ---- Character cards ---- */
+  .cast {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--seal-teal);
+    border-radius: 3px;
+    padding: 14px 16px;
+  }
+
+  .card h3 {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 14px;
+    margin: 0 0 6px;
+  }
+
+  .card .role {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-bottom: 8px;
+  }
+
+  .card p { font-size: 13px; margin: 0; max-width: none; }
+
+  /* ---- Timeline ---- */
+  .timeline { border-left: 2px solid var(--rule); margin-left: 6px; padding-left: 22px; }
+
+  .beat { position: relative; padding-bottom: 22px; }
+  .beat:last-child { padding-bottom: 0; }
+
+  .beat::before {
+    content: "";
+    position: absolute;
+    left: -27px;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--tab-amber);
+    border: 2px solid var(--paper);
+  }
+
+  .beat h3 {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    margin: 0 0 6px;
+  }
+
+  .beat h3 .n { color: var(--tab-amber); margin-right: 8px; }
+
+  .beat ul { margin: 6px 0 0; padding-left: 18px; font-size: 13.5px; }
+  .beat li { margin-bottom: 5px; max-width: 62ch; }
+  .beat .optional-flag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--stamp-red);
+    border: 1px solid var(--stamp-red);
+    border-radius: 2px;
+    padding: 1px 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* ---- Endings ---- */
+  .branches { display: flex; flex-direction: column; gap: 16px; }
+
+  .branch {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .branch-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 14px;
+    color: var(--paper);
+  }
+
+  .branch.a .branch-head { background: var(--tag-a); }
+  .branch.b .branch-head { background: var(--tag-b); }
+  .branch.c .branch-head { background: var(--tag-c); }
+  .branch.d .branch-head { background: var(--tag-d); }
+
+  .branch-body { padding: 14px 16px 16px; }
+
+  .variant { padding: 8px 0; border-top: 1px solid var(--rule); }
+  .variant:first-child { border-top: none; padding-top: 2px; }
+
+  .variant .vid {
+    font-weight: 800;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+  }
+
+  .variant p { font-size: 13.5px; margin: 4px 0 0; }
+
+  .epi {
+    font-size: 12.5px;
+    color: var(--ink-dim);
+    border-left: 2px solid var(--rule);
+    padding-left: 10px;
+    margin-top: 8px;
+  }
+
+  .epi strong { color: var(--ink); font-weight: 700; }
+
+  /* ---- Open questions ---- */
+  .questions { display: flex; flex-direction: column; gap: 10px; }
+
+  .q {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: var(--paper-raised);
+    border: 1px dashed var(--rule);
+    border-radius: 3px;
+    padding: 10px 14px;
+  }
+
+  .q .qn {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-weight: 900;
+    color: var(--stamp-red);
+    font-size: 13px;
+    flex-shrink: 0;
+    min-width: 20px;
+  }
+
+  .q p { font-size: 13.5px; margin: 0; }
+
+  .pending {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stamp-red);
+    border: 1px solid var(--stamp-red);
+    padding: 1px 5px;
+    border-radius: 2px;
+    margin-left: 6px;
+  }
+
+  footer {
+    padding-top: 24px;
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    section.file { animation: none; }
+  }
+</style>
+
+<div class="shell">
+
+  <header class="cover">
+    <div class="cover-top">
+      <div>
+        <div class="cover-meta">
+          <div>Vault-Tec Corporation &mdash; Internal Concept File</div>
+          <div>Fallout: New Vegas &middot; Companion Mod Outline</div>
+        </div>
+        <h1 class="title">Vault 23</h1>
+        <p class="subtitle">The Family Vault &mdash; Case Dossier</p>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:16px;">
+        <div class="vault-mark">23</div>
+        <div class="stamp">Working Draft</div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <a href="#premise">Premise</a>
+    <a href="#cast">Cast</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#endings">Endings</a>
+    <a href="#epilogues">Epilogues</a>
+    <a href="#questions">Open Questions</a>
+  </nav>
+
+  <section class="file" id="premise">
+    <div class="file-head"><span class="file-num">FILE 01</span><h2 class="file-title">Premise &amp; Lore</h2></div>
+    <p class="file-dek">General background, the twist, and the cover story the family tells itself.</p>
+
+    <p><strong>Vault number 23</strong> &mdash; a quiet nod to 23 pairs of human chromosomes, slotting naturally beside canon Vaults 22 and 24.</p>
+
+    <p><strong>The experiment.</strong> Vault-Tec sealed a single family in the vault, patriarch as Overseer, to interbreed and repopulate over generations. 200 years later the vault opens due to a crisis: population is large, but riddled with genetic defects from founder-effect inbreeding.</p>
+
+    <p><strong>Tone references.</strong> The Habsburgs &mdash; dynastic intermarriage for power, degeneration as the result of a deliberate choice, not an accident. Mad Max's War Boys, treated as a separate, compounding aesthetic layer (pallor, ritual, founder-worship) rather than the cause of the genetics. Two distinct vault horrors, stacked: isolation, and inbreeding.</p>
+
+    <p><strong>The twist.</strong> The current generation recognized the decline and tried to fix it by cracking the reactor and irradiating fetuses in the womb, chasing beneficial mutation. This demands a high birth rate to run enough trials &mdash; why every childbearing woman in the vault is pregnant, the first thing the player notices, long before they understand why. Side effect: the leak is worsening, and repeated exposure is making the mothers sick too.</p>
+
+    <p><strong>The cover story.</strong> Twenty years ago the Overseer publicly introduced "prenatal care" to fight infant mortality. Every word of the official story is true from the family's perspective and a lie about its actual cause &mdash; plausible deniability comes from a baseline of dysfunction the vault already had. Only the Overseer, the doctor, and his wife know the real mechanism.</p>
+
+    <p><strong>Succession.</strong> Fixed rule: eldest son of the eldest son. The son isn't fighting for a birthright he might lose &mdash; he already has it. What makes him a usurper is timing: taking power from a living father instead of waiting.</p>
+  </section>
+
+  <section class="file" id="cast">
+    <div class="file-head"><span class="file-num">FILE 02</span><h2 class="file-title">Cast of Characters</h2></div>
+    <p class="file-dek">Personnel on record inside Vault 23, plus one straggler in Vault 21.</p>
+
+    <div class="cast">
+      <div class="card">
+        <h3>George IX &mdash; The Overseer</h3>
+        <span class="role">Father &middot; Patriarch</span>
+        <p>Adamant against outside contact. Sees the radiation program as the family's own internal fix, outsiders as contamination. Not written as denial: the program has real successes. Central question &mdash; does sometimes-working justify the deaths incurred getting there? His fear of outsiders is legitimate, not just purity rhetoric.</p>
+      </div>
+      <div class="card">
+        <h3>George X &mdash; The Son</h3>
+        <span class="role">Heir Apparent &middot; Usurper</span>
+        <p>Believes outside genetic diversity is the fix, without knowing about the radiation program &mdash; or that he himself is one of its early, healthy successes. Dramatic irony resolved later in confrontation. Currently an isolated dissenter, frustrated by inaction he can see but can't explain.</p>
+      </div>
+      <div class="card">
+        <h3>Rebecca &mdash; The Wife</h3>
+        <span class="role">Mother &middot; Swing Vote</span>
+        <p>Knows the truth. Stopped having children after her one healthy son &mdash; a knowing choice. Currently aligned with the father, but persuadable: can be turned to the son's side, or brokered into halting the program without regime change. Keeps her given name, unlike the numbered Georges.</p>
+      </div>
+      <div class="card">
+        <h3>Silas &mdash; The Doctor</h3>
+        <span class="role">Physician &middot; True Believer</span>
+        <p>Mengele-archetype, genuinely enjoys the experimentation for its own sake. No guilt, no arc needed &mdash; the coldness is the disturbing part. A moral fixed point against the Overseer's ambiguity.</p>
+      </div>
+      <div class="card">
+        <h3>Clyde &mdash; The Failed Hero</h3>
+        <span class="role">Vault 23 Envoy, Absent</span>
+        <p>Sent to find reactor parts with no idea what he was looking for. Reached Vault 21, fell for Sarah, and &mdash; out of fear and cowardice &mdash; never left and never approached her. Found seated in Vault 21's dining room, no quest marker required.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="file" id="timeline">
+    <div class="file-head"><span class="file-num">FILE 03</span><h2 class="file-title">Story Beats</h2></div>
+    <p class="file-dek">Chronological path through the quest, 3.1 through 3.6.</p>
+
+    <div class="timeline">
+      <div class="beat">
+        <h3><span class="n">3.1</span>Discovery &mdash; Vault 21</h3>
+        <ul>
+          <li>Courier meets Clyde, who lets slip his real mission (a Perception check catches him outright).</li>
+          <li>Convince him via Repair / Science / Energy Weapons, or take his access key by force.</li>
+          <li>Either way, the player ends up with vault access and enters Vault 23 &mdash; Clyde reveals nothing about radiation or babies yet.</li>
+        </ul>
+      </div>
+      <div class="beat">
+        <h3><span class="n">3.2</span>Arrival &mdash; Earning Trust</h3>
+        <ul>
+          <li>The vault is suspicious of any uninvited outsider, regardless of how the player got in.</li>
+          <li>Trust built via tasks only an outsider can do &mdash; candidates: the doctor, the armory, the kitchen.</li>
+          <li>The doctor's task is the strongest candidate for the first "something's off" thread.</li>
+        </ul>
+      </div>
+      <div class="beat">
+        <h3><span class="n">3.3</span>Meeting the Overseer</h3>
+        <ul>
+          <li>Trust earned, the Overseer calls the player in to help with the leaking reactor.</li>
+          <li>The son is introduced mid-argument with his father over opening the vault to outsiders.</li>
+          <li>The son likely escorts the player to the reactor &mdash; a one-on-one window to build the relationship.</li>
+        </ul>
+      </div>
+      <div class="beat">
+        <h3><span class="n">3.4</span>Investigation with the Son<span class="optional-flag">Optional path</span></h3>
+        <ul>
+          <li>The player can simply repair the reactor, get paid, and leave &mdash; investigating is a choice, not a gate.</li>
+          <li>The son immediately senses something's wrong. A Perception / Science / Repair check reveals deliberate tampering; failing it instead sends the pair searching the vault's housing units.</li>
+          <li>Checking units flags radiation readings across the family's quarters &mdash; read differently depending on whether the reactor check passed.</li>
+          <li>Returning to the son (found in the eating space) leads straight into the ghoul incident.</li>
+        </ul>
+      </div>
+      <div class="beat">
+        <h3><span class="n">3.5</span>The Ghoul Incident</h3>
+        <ul>
+          <li>A pregnant woman ghoulifies mid prenatal-visit, kills one or two dwellers, and is put down by enforcers.</li>
+          <li>Only the Courier recognizes what happened &mdash; the vault has never seen a ghoul before.</li>
+          <li>Player choice: name it publicly, or stay quiet for later leverage. The doctor removes the body "to run tests."</li>
+        </ul>
+      </div>
+      <div class="beat">
+        <h3><span class="n">3.6</span>Confrontation &amp; Resolution</h3>
+        <ul>
+          <li>The son learns the truth, including his own origin as an early success of the program.</li>
+          <li>Accumulated evidence and relationships determine which ending path is available.</li>
+          <li><strong>Exit:</strong> normally requires talking the Overseer out of the passcode. Killing him lets the player loot it instead, but turns the vault hostile and seals the vault forever once the player leaves.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="file" id="endings">
+    <div class="file-head"><span class="file-num">FILE 04</span><h2 class="file-title">Endings</h2></div>
+    <p class="file-dek">No clean win &mdash; every path is a real trade-off, NV-style. Two root outcomes, plus two separate branches.</p>
+
+    <div class="branches">
+      <div class="branch a">
+        <div class="branch-head">A &middot; Side With the Father</div>
+        <div class="branch-body">
+          <div class="variant"><span class="vid">A0 &mdash; Walk Away</span><p>Skip the investigation entirely: fix the reactor, get paid, leave. Not a choice about the secret &mdash; the player never learns there is one.</p></div>
+          <div class="variant"><span class="vid">A1 &mdash; Keep the Secret</span><p>The program continues. An active, decisive silence &mdash; the original "hero" errand becomes complicit rather than heroic.</p></div>
+          <div class="variant"><span class="vid">A2 &mdash; Mother-Brokered Halt</span><p>Persuade Rebecca, who persuades the Overseer to stop the trials. Doesn't fix the genetic crisis, but ends the child deaths.</p></div>
+        </div>
+      </div>
+
+      <div class="branch b">
+        <div class="branch-head">B &middot; Side With the Son</div>
+        <div class="branch-body">
+          <div class="variant"><span class="vid">B1 &mdash; Kill the Father</span><p>Cleanest regime change, but requires comfort with patricide-by-proxy and doesn't erase the son's compromised origin.</p></div>
+          <div class="variant"><span class="vid">B2 &mdash; Forced Exile</span><p>Depose without killing &mdash; needs turned family support, the mother's backing, or ghoul-incident leverage.</p></div>
+          <div class="variant"><span class="vid">B3 &mdash; Voluntary Step-Down</span><p>Highest-investment path: make the father's position untenable rather than defeating him outright.</p></div>
+        </div>
+      </div>
+
+      <div class="branch c">
+        <div class="branch-head">C &middot; True Evil</div>
+        <div class="branch-body">
+          <div class="variant"><span class="vid">Single outcome</span><p>The Courier rigs the reactor to explode outright. No sub-variants: nothing left of the vault but a hole in the ground.</p></div>
+        </div>
+      </div>
+
+      <div class="branch d">
+        <div class="branch-head">D &middot; Violence Outcomes</div>
+        <div class="branch-body">
+          <div class="variant"><span class="vid">D1 &mdash; Kill Everyone</span><p>No succession, no negotiation. The vault lies dormant, never to be opened again.</p></div>
+          <div class="variant"><span class="vid">D2 &mdash; Kill the Overseer, Then Leave</span><p>Distinct from B1: no successor installed. Looting the passcode turns the vault hostile; leaving triggers the intercom lockout warning.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="file" id="epilogues">
+    <div class="file-head"><span class="file-num">FILE 05</span><h2 class="file-title">Epilogues</h2></div>
+    <p class="file-dek">Post-credits slideshow, one entry per ending path.</p>
+
+    <div class="epi"><strong>A0</strong> &mdash; Reactor fixed, paid, gone. Reads as ordinary attrition; no moral weight, because none was ever revealed.</div>
+    <div class="epi"><strong>A1</strong> &mdash; Program continues in secret. Many die, but eventually enough diversity is achieved to end the sickness. The Courier never learns whether it was worth it.</div>
+    <div class="epi"><strong>A2</strong> &mdash; Trials stop, but the underlying sickness was never cured. The vault declines and dies out; the few healthy children leave to walk the wastes.</div>
+    <div class="epi"><strong>B1</strong> &mdash; The father's death delegitimizes the new Overseer. The family overthrows him and tries to reseal the vault, but is slaughtered by outsiders who won't accept a permanent closure. <em>(rough draft, logic unresolved)</em></div>
+    <div class="epi"><strong>B2 / B3</strong> &mdash; Converge on the same outcome: the vault opens and is raided by the Legion, who enslave many and kill the rest &mdash; the father's original fear, vindicated either way. <span class="pending">Flagged for rework</span></div>
+    <div class="epi"><strong>D1</strong> &mdash; No succession, no outsiders, no story left to tell. The vault lies dormant forever.</div>
+    <div class="epi"><strong>D2</strong> &mdash; <span class="pending">Not yet written</span> &mdash; needs an epilogue distinct from B1, since no successor is installed and the vault is left leaderless and hostile.</div>
+  </section>
+
+  <section class="file" id="questions">
+    <div class="file-head"><span class="file-num">FILE 06</span><h2 class="file-title">Open Questions</h2></div>
+    <p class="file-dek">Flagged for further development &mdash; nothing below blocks the outline, but all of it needs answers eventually.</p>
+
+    <div class="questions">
+      <div class="q"><span class="qn">01</span><p>Ending gating: exact skill checks, evidence thresholds, or dialogue conditions unlocking each sub-variant.</p></div>
+      <div class="q"><span class="qn">02</span><p>Ending C's gate: a specific Science/Explosives check, an NPC interaction, or just an available action?</p></div>
+      <div class="q"><span class="qn">03</span><p>B1 needs firmer internal logic for why the family turns on the new Overseer and attempts resealing.</p></div>
+      <div class="q"><span class="qn">04</span><p>Pacing of the on-site evidence trail (deformities, terminal logs, stillbirths, a genuinely healthy child).</p></div>
+      <div class="q"><span class="qn">05</span><p>Does the son have any support base inside the vault beyond the mother as swing vote?</p></div>
+      <div class="q"><span class="qn">06</span><p>Vault placement is undecided <span class="pending">key lever</span> &mdash; nearby factions (Legion, NCR, raiders) should drive what happens when it opens, and may be the real fix for the B epilogues.</p></div>
+      <div class="q"><span class="qn">07</span><p>Exact content/design of the doctor / armory / kitchen trust-building tasks.</p></div>
+      <div class="q"><span class="qn">08</span><p>Epilogue content still needed for D1/D2, and whether a partial massacre deserves its own branch.</p></div>
+    </div>
+  </section>
+
+  <footer>Vault-Tec Corporation &mdash; internal working draft, subject to revision</footer>
+</div>
