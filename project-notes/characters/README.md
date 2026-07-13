@@ -10,7 +10,7 @@ Grouped the same way as [../characters.md](../characters.md), plus a `misc/` cat
 - `enforcement/` — Walter, Edgar, Thomas
 - `medical/` — Silas, Teresa
 - `kitchen/` — Haley, Elias, Constance
-- `misc/` — Phil, Amos, Prudence, Caleb, Agnes, Mabel
+- `misc/` — Phil, Amos, Prudence, Caleb, Agnes, Mabel, Clyde
 - `school/` — all 14 named children
 
 ## Shared daily rhythm
@@ -36,6 +36,7 @@ Monday–Friday are work/school days; Saturday–Sunday are rest days. Exception
 - **Caleb** keeps a reduced monitoring shift on weekends — water treatment can't be left fully unattended.
 - **Amos** is off on weekends barring emergencies (e.g. the reactor leak).
 - **George IX**, as Overseer, is effectively always on call, though he keeps lighter office hours on weekends.
+- **Clyde** has two entirely separate schedules depending on whether his §3.1 thread in [story-beats.md](../story-beats.md) resolves — see his file.
 
 ## Children
 
