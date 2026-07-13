@@ -6,5 +6,4 @@
 4. Evidence trail the player uncovers on-site (deformities, terminal logs, stillbirths, a genuinely healthy/diverse child) before fully understanding the program — pacing of the investigation. See [story-beats.md](story-beats.md).
 5. Son's support base, if any, inside the vault, beyond the mother as a swing vote. See [characters.md](characters.md).
 6. **Vault placement is undecided**, and it matters directly for the epilogues: which factions are geographically near the vault (Legion, NCR, independent raiders, etc.) should drive what actually happens when it opens. Ties directly into reworking the B epilogues — placement may be the actual lever that differentiates them.
-7. Exact content/design of the doctor/armory/kitchen trust-building tasks (see [story-beats.md](story-beats.md#32-arrival--earning-trust-inside-vault-23)).
-8. Epilogue content for the "player kills X" violence outcomes (D1/D2) still needs writing, and whether a partial massacre (some family members, not all) deserves its own branch. See [endings.md](endings.md) and [epilogues.md](epilogues.md).
+7. Epilogue content for the "player kills X" violence outcomes (D1/D2) still needs writing, and whether a partial massacre (some family members, not all) deserves its own branch. See [endings.md](endings.md) and [epilogues.md](epilogues.md).

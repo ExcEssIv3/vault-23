@@ -14,7 +14,28 @@ Cast referenced below is detailed in [characters.md](characters.md); background 
 - Vault is highly suspicious of an uninvited outsider walking in, regardless of how the player got the key.
 - Trust is built by helping individual vault members with tasks that specifically require an outsider — access to the wasteland, skills, or supplies the vault itself lacks.
 - Candidate NPCs: the doctor, whoever runs the armory, someone in the kitchen. Each is a vehicle for characterization/worldbuilding. The doctor's task in particular is a strong candidate for planting the first "something's off" thread without giving anything away yet.
-- Open: exact content of each task still to be designed; kitchen/armory tasks likely lean toward characterization/worldbuilding, doctor's should carry more narrative weight.
+- Open: exact content of the doctor task still to be designed; kitchen and armory are now fleshed out below.
+
+### Armory quest — Phil
+- Phil, the armorer, found a schematic for an anti-materiel rifle in the vault library and has been building it at his workbench — a gun nut who's only ever theorized about wasteland-grade weapons until now.
+- Also on the workbench: a Mr. Handy he's been scrapping for parts, left mid-teardown.
+- **Main goal**: he's short the components to finish the build — 5 scrap metal, 3 scrap electronics, 1 fission battery.
+- **Skill check shortcut**: a high enough **Repair** check lets the player help him jury-rig it instead, needing only 2 scrap metal, a roll of duct tape, and some Wonderglue.
+- **Side goal, optional**: he also wants help learning to actually shoot the thing once it's built — either bring him 2 Milsurp Review magazines, or, with a high enough **Guns** skill, teach him directly. Rewards the player with ammo for completing this side goal.
+
+### Doctor quest — Silas
+- **Main goal**: Silas asks for a resupply of radiation medicine — RadAway/RadX — because the vault is "running low." Reads as mundane and consistent with the vault's existing prenatal-care cover story; the real reason (the program burning through supply) isn't apparent yet.
+- **Side goal, optional and shady**: Silas separately asks for **5 samples of irradiated brain matter** from feral ghouls, "for testing" — an odd, morbid ask at this point in the story, since no one in the vault has ever seen a ghoul. Only becomes clearly ironic in hindsight once the ghoul incident happens in §3.5.
+  - Implementation note: irradiated brain matter isn't a normal ghoul drop — it needs a temporary drop chance on feral ghouls that's only active while this side quest is in progress (script-gated on quest stage, not a permanent loot table change).
+  - Reward: a couple of Stimpaks for completing this side goal.
+
+### Kitchen quest — Haley
+- The kitchen has a couple of vault dwellers working it, plus one lead chef, **Haley**.
+- Haley tells the Courier the dwellers are sick of the same recipes and ingredients, generation after generation of the same rations, and asks for wasteland ingredients to break the monotony:
+  - **Fruit**: 1 mutfruit, 1 banana yucca fruit
+  - **Meat**: 1 bighorner meat, 1 brahmin meat
+  - **Spices**: 1 jalapeno pepper, 1 honey mesquite pod
+- Optional layer on top of the fetch: the player can buy a cookbook from the Crimson Caravan to hand off to Haley, or, with a high enough **Survival** skill, teach her the recipes directly instead of buying anything. She will give the player an additional reward for this.
 
 ## 3.3 Meeting the Overseer & introducing the son
 - Once trust is earned, the Overseer calls the player in and asks for help with the reactor, revealing it's leaking.
@@ -37,8 +58,8 @@ Cast referenced below is detailed in [characters.md](characters.md); background 
 
 ## 3.5 The ghoul incident (escalation, not inciting incident)
 - Triggers directly out of the housing-unit findings in §3.4: the player has just returned to George X in the eating space with the news that radiation was found across the housing units, and delivers those details to him.
-- Staging: the player and George X are in a separate room adjacent to the kitchen, watching what happens through a window rather than being in the room themselves — not a forced-encounter combat beat, an observed one.
-- A pregnant woman, previously introduced to the player, complains of feeling unwell during/after a prenatal visit, then suddenly ghoulifies (green flash) in the kitchen. She attacks nearby vault dwellers, killing one or two, before being put down.
+- Staging: the player and George X are in a separate room, watching what happens through a window into the eating area rather than being in the room themselves — not a forced-encounter combat beat, an observed one.
+- A pregnant woman, previously introduced to the player, is in the eating area when she suddenly ghoulifies (green flash), unprompted — no prenatal-visit lead-up. She attacks nearby vault dwellers, killing one or two, before being put down.
 - No one in the vault has ever seen a ghoul before — only the Courier recognizes what happened, repositioning the player from outsider-being-shown-around to the only person who understands the real stakes.
 - Immediately after, George X tells the player to wait there — he doesn't think an outsider stepping in will help the situation — and leaves. Fade to black.
 - On return, George X explains that Silas has already removed the body "to run an autopsy," and asks the player directly if they know what happened.
@@ -50,8 +71,12 @@ Cast referenced below is detailed in [characters.md](characters.md); background 
 ## 3.6 Silas's office & Teresa
 - Obvious next step after the ghoul incident: the player goes to confront Silas directly about the "autopsy." He's evasive, as expected — no information gained from him directly.
 - Introduces **Teresa**, Silas's assistant. She tells the player she's suspicious of Silas.
-- With a high enough Speech/Barter check, the player can convince her to say more: Silas has a safe in his office he won't let anyone open.
-- If the player can't pass that check, there's a fallback: a quest for Teresa, tradeable for the same information about the safe.
+- **Speech check**: high enough, and the player can convince her directly that her suspicions are valid — no further legwork needed. She reveals Silas keeps a locked safe in his office he won't let anyone open, and that she knows the password to his computer, which the player can use to open it.
+- **If that check fails**, Teresa isn't willing to take the player's word for it — she wants proof of her own. She says she'd need to get a look at part of the ghoulified woman's body to see what's actually wrong with it.
+  - The body is scheduled for incineration and currently locked in the vault freezer — the player has to break in.
+  - **Medicine check**, once inside: high enough, and the player carefully removes a small sample from the body without it being noticed. Too low, and the player instead has to butcher the body and take the whole hand — triggered via the gore system, blood spray included.
+  - Bringing the sample (or the hand) back to Teresa: she examines it and recognizes the cells have been fundamentally transformed by radiation, at levels far beyond anything that occurs naturally — this is what tips her from suspicion into certainty.
+  - In turn, she reveals she knows the password to Silas's computer, which the player can use to open his safe — same outcome as the Speech-check path, reached the harder way.
 - Silas's office door is always locked, but standing near it registers radiation on approach — enough to tell the player something is off even without convincing Teresa or doing her quest, so no one is hard-blocked from noticing.
 - Inside the office once opened: a large stock of radiation medication (RadX, RadAway). Inside the safe specifically: irradiated material, a syringe, notes documenting the experiments, and a note from the Overseer himself — the physical proof of the program's real mechanism, and the piece that makes clear the Overseer isn't just aware but directly involved, not merely turning a blind eye to Silas.
 - Once the safe is opened, the quest updates with **"Bring the proof of what's happening to George X"** and **"(Optional) Bring the proof to the Overseer."** Taking it to George X is the critical path into §3.7.
