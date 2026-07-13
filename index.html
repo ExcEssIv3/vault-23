@@ -1,416 +1,6 @@
 <title>Vault 23 — Case File</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<style>
-  :root {
-    --paper: #ded8c3;
-    --paper-raised: #e8e3d1;
-    --ink: #26261f;
-    --ink-dim: #5b5847;
-    --rule: #b9b193;
-    --stamp-red: #9c3226;
-    --seal-teal: #1f4d54;
-    --tab-amber: #a9781f;
-    --tag-a: #1f4d54;
-    --tag-b: #a9781f;
-    --tag-c: #9c3226;
-    --tag-d: #5b5847;
-    --focus: #1f4d54;
-  }
-
-  :root[data-theme="dark"] {
-    --paper: #0c0f0a;
-    --paper-raised: #12160f;
-    --ink: #c9dcc4;
-    --ink-dim: #7c9078;
-    --rule: #2b3626;
-    --stamp-red: #d97a63;
-    --seal-teal: #6fbcae;
-    --tab-amber: #e0b24a;
-    --tag-a: #6fbcae;
-    --tag-b: #e0b24a;
-    --tag-c: #d97a63;
-    --tag-d: #7c9078;
-    --focus: #6fbcae;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #0c0f0a;
-      --paper-raised: #12160f;
-      --ink: #c9dcc4;
-      --ink-dim: #7c9078;
-      --rule: #2b3626;
-      --stamp-red: #d97a63;
-      --seal-teal: #6fbcae;
-      --tab-amber: #e0b24a;
-      --tag-a: #6fbcae;
-      --tag-b: #e0b24a;
-      --tag-c: #d97a63;
-      --tag-d: #7c9078;
-      --focus: #6fbcae;
-    }
-  }
-
-  * { box-sizing: border-box; }
-
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Courier New", Courier, ui-monospace, monospace;
-    font-size: 15px;
-    line-height: 1.55;
-    transition: background 0.3s, color 0.3s;
-  }
-
-  ::selection { background: var(--seal-teal); color: var(--paper); }
-
-  a { color: var(--seal-teal); }
-  a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
-  }
-
-  .shell {
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 0 clamp(16px, 4vw, 40px) 80px;
-  }
-
-  /* ---- Cover ---- */
-  .cover {
-    padding: 48px 0 28px;
-    border-bottom: 3px double var(--ink);
-    margin-bottom: 8px;
-  }
-
-  .cover-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .cover-meta {
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-  }
-
-  .cover-meta div + div { margin-top: 3px; }
-
-  .stamp {
-    border: 3px solid var(--stamp-red);
-    color: var(--stamp-red);
-    font-family: "Arial Narrow", Arial, sans-serif;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-size: 12px;
-    padding: 8px 14px;
-    transform: rotate(-3deg);
-    white-space: nowrap;
-    border-radius: 2px;
-    opacity: 0.9;
-  }
-
-  h1.title {
-    font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    font-size: clamp(34px, 6vw, 56px);
-    line-height: 1.02;
-    margin: 22px 0 6px;
-    text-wrap: balance;
-  }
-
-  .subtitle {
-    font-family: "Arial Narrow", Arial, sans-serif;
-    font-weight: 700;
-    color: var(--ink-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 13px;
-    margin: 0;
-  }
-
-  .vault-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px;
-    height: 64px;
-    border: 3px solid var(--seal-teal);
-    border-radius: 50%;
-    color: var(--seal-teal);
-    font-family: "Arial Narrow", Arial, sans-serif;
-    font-weight: 900;
-    font-size: 22px;
-    flex-shrink: 0;
-  }
-
-  /* ---- Nav tabs ---- */
-  nav.tabs {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    display: flex;
-    gap: 2px;
-    flex-wrap: wrap;
-    background: var(--paper);
-    padding: 14px 0;
-    margin-bottom: 12px;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  nav.tabs a {
-    font-family: "Arial Narrow", Arial, sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 12px;
-    text-decoration: none;
-    color: var(--ink-dim);
-    background: var(--paper-raised);
-    border: 1px solid var(--rule);
-    border-bottom: none;
-    padding: 8px 14px 7px;
-    border-radius: 4px 4px 0 0;
-  }
-
-  nav.tabs a:hover { color: var(--ink); border-color: var(--tab-amber); }
-
-  /* ---- Sections ---- */
-  section.file {
-    padding: 34px 0;
-    border-bottom: 1px solid var(--rule);
-    scroll-margin-top: 64px;
-  }
-
-  section.file:last-of-type { border-bottom: none; }
-
-  .file-head {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    margin-bottom: 6px;
-  }
-
-  .file-num {
-    font-family: "Arial Narrow", Arial, sans-serif;
-    font-weight: 900;
-    font-size: 12px;
-    color: var(--tab-amber);
-    letter-spacing: 0.1em;
-  }
-
-  h2.file-title {
-    font-family: "Arial Narrow", Arial, sans-serif;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    font-size: clamp(22px, 3.6vw, 30px);
-    margin: 0;
-    text-wrap: balance;
-  }
-
-  .file-dek {
-    color: var(--ink-dim);
-    font-size: 13px;
-    margin: 4px 0 20px;
-    max-width: 62ch;
-  }
-
-  p { max-width: 68ch; }
-
-  section.file > ul { max-width: 68ch; padding-left: 20px; font-size: 14px; }
-  section.file > ul li { margin-bottom: 8px; }
-
-  /* ---- Character cards ---- */
-  .cast {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
-  }
-
-  .card {
-    background: var(--paper-raised);
-    border: 1px solid var(--rule);
-    border-left: 4px solid var(--seal-teal);
-    border-radius: 3px;
-    padding: 14px 16px;
-  }
-
-  .card h3 {
-    font-family: "Arial Narrow", Arial, sans-serif;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-size: 14px;
-    margin: 0 0 6px;
-  }
-
-  .card .role {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    margin-bottom: 8px;
-  }
-
-  .card p { font-size: 13px; margin: 0; max-width: none; }
-
-  /* ---- Timeline ---- */
-  .timeline { border-left: 2px solid var(--rule); margin-left: 6px; padding-left: 22px; }
-
-  .beat { position: relative; padding-bottom: 22px; }
-  .beat:last-child { padding-bottom: 0; }
-
-  .beat::before {
-    content: "";
-    position: absolute;
-    left: -27px;
-    top: 4px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--tab-amber);
-    border: 2px solid var(--paper);
-  }
-
-  .beat h3 {
-    font-family: "Arial Narrow", Arial, sans-serif;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 0.03em;
-    margin: 0 0 6px;
-  }
-
-  .beat h3 .n { color: var(--tab-amber); margin-right: 8px; }
-
-  .beat ul { margin: 6px 0 0; padding-left: 18px; font-size: 13.5px; }
-  .beat li { margin-bottom: 5px; max-width: 62ch; }
-  .beat .optional-flag {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--stamp-red);
-    border: 1px solid var(--stamp-red);
-    border-radius: 2px;
-    padding: 1px 6px;
-    margin-left: 8px;
-    vertical-align: middle;
-  }
-
-  /* ---- Endings ---- */
-  .branches { display: flex; flex-direction: column; gap: 16px; }
-
-  .branch {
-    background: var(--paper-raised);
-    border: 1px solid var(--rule);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .branch-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 16px;
-    font-family: "Arial Narrow", Arial, sans-serif;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-size: 14px;
-    color: var(--paper);
-  }
-
-  .branch.a .branch-head { background: var(--tag-a); }
-  .branch.b .branch-head { background: var(--tag-b); }
-  .branch.c .branch-head { background: var(--tag-c); }
-  .branch.d .branch-head { background: var(--tag-d); }
-
-  .branch-body { padding: 14px 16px 16px; }
-
-  .variant { padding: 8px 0; border-top: 1px solid var(--rule); }
-  .variant:first-child { border-top: none; padding-top: 2px; }
-
-  .variant .vid {
-    font-weight: 800;
-    font-family: "Arial Narrow", Arial, sans-serif;
-    font-size: 12.5px;
-    letter-spacing: 0.04em;
-  }
-
-  .variant p { font-size: 13.5px; margin: 4px 0 0; }
-
-  .epi {
-    font-size: 12.5px;
-    color: var(--ink-dim);
-    border-left: 2px solid var(--rule);
-    padding-left: 10px;
-    margin-top: 8px;
-  }
-
-  .epi strong { color: var(--ink); font-weight: 700; }
-
-  /* ---- Open questions ---- */
-  .questions { display: flex; flex-direction: column; gap: 10px; }
-
-  .q {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    background: var(--paper-raised);
-    border: 1px dashed var(--rule);
-    border-radius: 3px;
-    padding: 10px 14px;
-  }
-
-  .q .qn {
-    font-family: "Arial Narrow", Arial, sans-serif;
-    font-weight: 900;
-    color: var(--stamp-red);
-    font-size: 13px;
-    flex-shrink: 0;
-    min-width: 20px;
-  }
-
-  .q p { font-size: 13.5px; margin: 0; }
-
-  .pending {
-    display: inline-block;
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--stamp-red);
-    border: 1px solid var(--stamp-red);
-    padding: 1px 5px;
-    border-radius: 2px;
-    margin-left: 6px;
-  }
-
-  footer {
-    padding-top: 24px;
-    font-size: 11px;
-    color: var(--ink-dim);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    section.file { animation: none; }
-  }
-</style>
+<link rel="stylesheet" href="assets/vault.css" />
 
 <div class="shell">
 
@@ -464,22 +54,22 @@
 
     <div class="cast">
       <div class="card">
-        <h3>George IX &mdash; The Overseer</h3>
+        <h3><a href="html/characters/ruling-family/george-ix.html">George IX &mdash; The Overseer</a></h3>
         <span class="role">Father &middot; Patriarch</span>
         <p>Adamant against outside contact. Sees the radiation program as the family's own internal fix, outsiders as contamination. Not written as denial: the program has real successes. Central question &mdash; does sometimes-working justify the deaths incurred getting there? His fear of outsiders is legitimate, not just purity rhetoric.</p>
       </div>
       <div class="card">
-        <h3>George X &mdash; The Son</h3>
+        <h3><a href="html/characters/ruling-family/george-x.html">George X &mdash; The Son</a></h3>
         <span class="role">Heir Apparent &middot; Usurper</span>
         <p>Believes outside genetic diversity is the fix, without knowing about the radiation program &mdash; or that he himself is one of its early, healthy successes. Dramatic irony resolved later in confrontation. Currently an isolated dissenter, frustrated by inaction he can see but can't explain.</p>
       </div>
       <div class="card">
-        <h3>Rebecca &mdash; The Wife</h3>
+        <h3><a href="html/characters/ruling-family/rebecca.html">Rebecca &mdash; The Wife</a></h3>
         <span class="role">Mother &middot; Swing Vote</span>
         <p>Knows the truth. Stopped having children after her one healthy son &mdash; a knowing choice. Currently aligned with the father, but persuadable: can be turned to the son's side, or brokered into halting the program without regime change. Keeps her given name, unlike the numbered Georges.</p>
       </div>
       <div class="card">
-        <h3>Silas &mdash; The Doctor</h3>
+        <h3><a href="html/characters/medical/silas.html">Silas &mdash; The Doctor</a></h3>
         <span class="role">Physician &middot; True Believer</span>
         <p>Mengele-archetype, genuinely enjoys the experimentation for its own sake. No guilt, no arc needed &mdash; the coldness is the disturbing part. A moral fixed point against the Overseer's ambiguity. Trust-building task: a mundane RadAway/RadX resupply, plus an optional, shadier ask for irradiated ghoul brain matter "for testing" &mdash; a deniable first hint of his real nature.</p>
       </div>
@@ -489,17 +79,17 @@
         <p>Sent to find reactor parts with no idea what he was looking for. Reached Vault 21, fell for Sarah, and &mdash; out of fear and cowardice &mdash; never left and never approached her. Found seated in Vault 21's dining room, no quest marker required.</p>
       </div>
       <div class="card">
-        <h3>Phil &mdash; The Armorer</h3>
+        <h3><a href="html/characters/misc/phil.html">Phil &mdash; The Armorer</a></h3>
         <span class="role">Gun Nut</span>
         <p>Building an anti-materiel rifle off a schematic found in the vault library, at a bench that also holds a Mr. Handy he's been scrapping for parts. Trust-building task: fetch build components (jury-riggable with a high Repair check), plus an optional side goal teaching him to shoot it.</p>
       </div>
       <div class="card">
-        <h3>Haley &mdash; The Cook</h3>
+        <h3><a href="html/characters/kitchen/haley.html">Haley &mdash; The Cook</a></h3>
         <span class="role">Lead Chef</span>
         <p>Runs the kitchen with a couple of dwellers under her. The family's sick of the same generations-old rations &mdash; trust-building task is fetching wasteland fruit, meat, and spice to vary the menu, optionally rounded out with a Crimson Caravan cookbook or a high Survival check to teach her directly.</p>
       </div>
       <div class="card">
-        <h3>Teresa &mdash; The Assistant</h3>
+        <h3><a href="html/characters/medical/teresa.html">Teresa &mdash; The Assistant</a></h3>
         <span class="role">Silas's Assistant</span>
         <p>Suspicious of Silas but unwilling to act on suspicion alone. A high Speech check convinces her outright; failing it sends the player after physical proof instead &mdash; a tissue sample cut from the incinerated ghoul's body in the vault freezer. Either way, she hands over the password to Silas's computer. Introduced right after the ghoul incident, when Silas stonewalls the player about the "autopsy."</p>
       </div>
@@ -519,18 +109,18 @@
 
     <p><strong>Life support.</strong> Power, water, and air all trace back to the same aging reactor &mdash; the leak isn't an isolated problem, it's the first visible crack in a system that's been quietly running down for 200 years. Food is the open question: no hydroponics has ever been established, so the kitchen runs on generations-old stored rations &mdash; the actual root of Haley's trust-building request.</p>
 
-    <p><strong>Resident roster.</strong> Built bottom-up from working roles and marriages, rather than a top-down population guess.</p>
+    <p><strong>Resident roster.</strong> Built bottom-up from working roles and marriages, rather than a top-down population guess. Full <a href="html/characters/index.html">personnel directory &amp; schedules &rarr;</a></p>
     <ul>
-      <li><strong>Ruling family:</strong> George IX (Overseer), George X (heir).</li>
-      <li><strong>Enforcement:</strong> Walter, Edgar, Thomas.</li>
-      <li><strong>Medical:</strong> Silas, Teresa.</li>
-      <li><strong>Kitchen:</strong> Haley (lead), Elias, Constance.</li>
-      <li><strong>Armory:</strong> Phil.</li>
-      <li><strong>Other working roles:</strong> Amos (maintenance), Prudence (teacher), Caleb (water treatment), Agnes (janitor).</li>
-      <li><strong>Elderly:</strong> Mabel, widowed, unofficial keeper of the family journals.</li>
+      <li><strong>Ruling family:</strong> <a href="html/characters/ruling-family/george-ix.html">George IX</a> (Overseer), <a href="html/characters/ruling-family/george-x.html">George X</a> (heir).</li>
+      <li><strong>Enforcement:</strong> <a href="html/characters/enforcement/walter.html">Walter</a>, <a href="html/characters/enforcement/edgar.html">Edgar</a>, <a href="html/characters/enforcement/thomas.html">Thomas</a>.</li>
+      <li><strong>Medical:</strong> <a href="html/characters/medical/silas.html">Silas</a>, <a href="html/characters/medical/teresa.html">Teresa</a>.</li>
+      <li><strong>Kitchen:</strong> <a href="html/characters/kitchen/haley.html">Haley</a> (lead), <a href="html/characters/kitchen/elias.html">Elias</a>, <a href="html/characters/kitchen/constance.html">Constance</a>.</li>
+      <li><strong>Armory:</strong> <a href="html/characters/misc/phil.html">Phil</a>.</li>
+      <li><strong>Other working roles:</strong> <a href="html/characters/misc/amos.html">Amos</a> (maintenance), <a href="html/characters/misc/prudence.html">Prudence</a> (teacher), <a href="html/characters/misc/caleb.html">Caleb</a> (water treatment), <a href="html/characters/misc/agnes.html">Agnes</a> (janitor).</li>
+      <li><strong>Elderly:</strong> <a href="html/characters/misc/mabel.html">Mabel</a>, widowed, unofficial keeper of the family journals.</li>
     </ul>
 
-    <p><strong>Families.</strong> George IX &amp; Rebecca (parents of George X); Walter &amp; Teresa (Josiah); Edgar &amp; Haley (Eleanor, Nathaniel, Clara, and Simeon); Thomas &amp; Agnes (Beatrice, Gideon, Harriet, and Reuben); Elias &amp; Constance (Ida and Jonas); Amos &amp; Prudence (Martha, Tobias, and Norah). 18 named adults and 14 named children so far, plus unnamed background dwellers still to be layered on.</p>
+    <p><strong>Families.</strong> George IX &amp; Rebecca (parents of George X); Walter &amp; Teresa (Josiah); Edgar &amp; Haley (Eleanor, Nathaniel, Clara, and Simeon); Thomas &amp; Agnes (Beatrice, Gideon, Harriet, and Reuben); Elias &amp; Constance (Ida and Jonas); Amos &amp; Prudence (Martha, Tobias, and Norah). 18 named adults and 14 named children so far, plus unnamed background dwellers still to be layered on. See the full <a href="html/characters/index.html">roster</a> for the children's individual pages.</p>
   </section>
 
   <section class="file" id="timeline">

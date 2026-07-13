@@ -5,6 +5,7 @@ Fallout: New Vegas mod concept. Previously a single file (`archive/vault-mod-out
 - [lore.md](lore.md) — general lore & premise, inspirations, the twist, the cover story, succession
 - [characters.md](characters.md) — the Overseer, the son, the mother, the doctor, Clyde
 - [vault-layout.md](vault-layout.md) — the vault itself: room-by-room layout, resident roster, systems/tech
+- [characters/](characters/README.md) — one file per named resident: schedule now, voice lines later
 - [story-beats.md](story-beats.md) — chronological story beats (3.1–3.7)
 - [endings.md](endings.md) — ending paths (A/B/C)
 - [epilogues.md](epilogues.md) — post-credits slideshow per ending
