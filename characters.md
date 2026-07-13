@@ -21,3 +21,47 @@ Naming convention: eldest son of the eldest son has always been named George, ma
 **Teresa**: Silas's assistant. Suspicious of him but not willing to act on suspicion alone — a high enough Speech check convinces her outright; failing it sends the player after physical proof instead (a tissue sample from the incinerated ghoul's body, cut from the vault freezer). Either way she ends up revealing the password to Silas's computer, which opens his office safe. Introduced in the beat right after the ghoul incident, when the player goes to confront Silas about the "autopsy" and gets stonewalled. See [story-beats.md §3.6](story-beats.md#36-silass-office--teresa).
 
 **Player-facing NPCs for trust-building**: the doctor, whoever runs the armory, someone in the kitchen — see [story-beats.md](story-beats.md#32-arrival--earning-trust-inside-vault-23).
+
+## Resident roster
+
+Built bottom-up from working roles and who they're married to, rather than a top-down population guess. Room/level references are in [vault-layout.md](vault-layout.md).
+
+**Ruling family**
+- George IX — Overseer.
+- George X — heir.
+
+**Enforcement**
+- Walter
+- Edgar
+- Thomas
+
+**Medical**
+- Silas
+- Teresa
+
+**Kitchen**
+- Haley (lead)
+- Elias
+- Constance
+
+**Armory**
+- Phil
+
+**Other working roles**
+- Amos — maintenance.
+- Prudence — teacher.
+- Caleb — water treatment.
+- Agnes — janitor.
+
+**Families**
+- George IX & Rebecca — parents of George X. Level 1, Overseer's quarters.
+- Walter & Teresa — parents of Josiah.
+- Edgar & Haley — parents of Eleanor, Nathaniel, Clara, and Simeon.
+- Thomas & Agnes — parents of Beatrice, Gideon, Harriet, and Reuben.
+- Elias & Constance — parents of Ida and Jonas.
+- Amos & Prudence — parents of Martha, Tobias, and Norah.
+
+**Elderly**
+- Mabel — widowed, lives alone in her own unit, not working. Unofficial keeper of the vault's hand-written family journals in the library — one of the few residents whose memory of the family's history reaches back further than anyone else living.
+
+That's 18 named adults across 5 married households (Walter+Teresa, Edgar+Haley, Thomas+Agnes, Elias+Constance, Amos+Prudence, totaling 14 children) plus 5 unmarried adults (George X, Silas, Phil, Caleb, Mabel) and the ruling couple. Each married couple or unmarried adult has their own housing unit (see [vault-layout.md](vault-layout.md)). Other elderly relatives and unnamed background dwellers still need to be layered on top of this.
