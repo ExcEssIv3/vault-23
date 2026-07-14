@@ -6,6 +6,7 @@ Fallout: New Vegas mod concept. Previously a single file (`archive/vault-mod-out
 - [characters.md](characters.md) — the Overseer, the son, the mother, the doctor, Clyde
 - [vault-layout.md](vault-layout.md) — the vault itself: room-by-room layout, resident roster, systems/tech
 - [characters/](characters/README.md) — one file per named resident: schedule now, voice lines later
+- [dialogue/](dialogue/) — playable dialogue trees in Ink (`.ink`), one file per conversation; rendered live on character HTML pages via inkjs
 - [story-beats.md](story-beats.md) — chronological story beats (3.1–3.7)
 - [endings.md](endings.md) — ending paths (A/B/C)
 - [epilogues.md](epilogues.md) — post-credits slideshow per ending
