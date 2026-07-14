@@ -16,9 +16,19 @@
     container.appendChild(p);
   }
 
-  function renderChoices(container, story, log, onDone) {
+  function clearChoices(container) {
     var existing = container.querySelector(".dlg-choices");
     if (existing) existing.remove();
+  }
+
+  function choiceKey(choice) {
+    // targetPath is stable per choice slot (e.g. "topic_menu.0.c-0") regardless
+    // of how many times the story revisits it, so it works as a visited-tracking id.
+    return choice.targetPath ? choice.targetPath.toString() : choice.text;
+  }
+
+  function renderChoices(container, story, log, visited, onDone) {
+    clearChoices(container);
 
     if (story.currentChoices.length === 0) {
       var end = document.createElement("p");
@@ -33,24 +43,29 @@
     choicesEl.className = "dlg-choices";
     story.currentChoices.forEach(function (choice, index) {
       var btn = document.createElement("button");
-      btn.className = "dlg-choice";
+      var key = choiceKey(choice);
+      btn.className = "dlg-choice" + (visited.has(key) ? " dlg-choice-visited" : "");
       btn.textContent = choice.text;
       btn.addEventListener("click", function () {
+        visited.add(key);
         story.ChooseChoiceIndex(index);
-        advance(story, log, container, onDone);
+        advance(story, log, container, visited, onDone);
       });
       choicesEl.appendChild(btn);
     });
     container.appendChild(choicesEl);
   }
 
-  function advance(story, log, choicesContainer, onDone) {
+  // Fallout-style dialogue box: each choice replaces the displayed text rather
+  // than appending to a running log. Drains every line up to the next real
+  // decision point and shows only that response, plus the choices that follow it.
+  function advance(story, log, choicesContainer, visited, onDone) {
+    log.innerHTML = "";
     while (story.canContinue) {
       var text = story.Continue().trim();
       if (text.length > 0) renderLine(log, text);
     }
-    renderChoices(choicesContainer, story, log, onDone);
-    log.scrollTop = log.scrollHeight;
+    renderChoices(choicesContainer, story, log, visited, onDone);
   }
 
   function mount(root, inkUrl) {
@@ -68,6 +83,7 @@
       .then(function (source) {
         var compiler = new inkjs.Compiler(source);
         var story = compiler.Compile();
+        var visited = new Set();
 
         root.innerHTML = "";
         var log = document.createElement("div");
@@ -81,8 +97,9 @@
         restartBtn.textContent = "\u21ba Restart conversation";
         restartBtn.addEventListener("click", function () {
           story.ResetState();
+          visited.clear();
           log.innerHTML = "";
-          advance(story, log, choicesContainer);
+          advance(story, log, choicesContainer, visited);
         });
         restartWrap.appendChild(restartBtn);
 
@@ -90,7 +107,7 @@
         root.appendChild(choicesContainer);
         root.appendChild(restartWrap);
 
-        advance(story, log, choicesContainer);
+        advance(story, log, choicesContainer, visited);
       })
       .catch(function (err) {
         root.innerHTML = "";

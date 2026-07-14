@@ -517,6 +517,9 @@
 
 .dlg-choice:hover { border-left-color: var(--seal-teal); color: var(--seal-teal); }
 
+.dlg-choice-visited { opacity: 0.45; border-left-color: var(--ink-dim); }
+.dlg-choice-visited:hover { opacity: 0.75; }
+
 .dlg-restart-wrap { margin-top: 12px; }
 
 .dlg-restart {
