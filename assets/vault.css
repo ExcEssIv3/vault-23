@@ -520,6 +520,15 @@
 .dlg-choice-visited { opacity: 0.45; border-left-color: var(--ink-dim); }
 .dlg-choice-visited:hover { opacity: 0.75; }
 
+.dlg-continue {
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-left-color: var(--ink-dim);
+}
+.dlg-continue:hover { border-left-color: var(--seal-teal); color: var(--seal-teal); }
+
 .dlg-restart-wrap { margin-top: 12px; }
 
 .dlg-restart {

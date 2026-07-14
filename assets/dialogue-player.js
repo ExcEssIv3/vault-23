@@ -56,16 +56,45 @@
     container.appendChild(choicesEl);
   }
 
-  // Fallout-style dialogue box: each choice replaces the displayed text rather
-  // than appending to a running log. Drains every line up to the next real
-  // decision point and shows only that response, plus the choices that follow it.
-  function advance(story, log, choicesContainer, visited, onDone) {
-    log.innerHTML = "";
+  function renderContinueButton(container, story, log, visited, onDone) {
+    clearChoices(container);
+    var wrap = document.createElement("div");
+    wrap.className = "dlg-choices";
+    var btn = document.createElement("button");
+    btn.className = "dlg-choice dlg-continue";
+    btn.textContent = "▸ Continue";
+    btn.addEventListener("click", function () {
+      revealNext(story, log, container, visited, onDone);
+    });
+    wrap.appendChild(btn);
+    container.appendChild(wrap);
+  }
+
+  // Reveals exactly one visible line (auto-skipping blank/invisible output),
+  // clearing whatever was shown before it — only ever one line on screen at
+  // a time, whether it's the first line of a new response or another beat of
+  // an unbroken cutscene stretch reached via the Continue prompt.
+  function revealNext(story, log, choicesContainer, visited, onDone) {
     while (story.canContinue) {
       var text = story.Continue().trim();
-      if (text.length > 0) renderLine(log, text);
+      if (text.length > 0) {
+        log.innerHTML = "";
+        renderLine(log, text);
+        if (story.canContinue) {
+          renderContinueButton(choicesContainer, story, log, visited, onDone);
+        } else {
+          renderChoices(choicesContainer, story, log, visited, onDone);
+        }
+        return;
+      }
     }
     renderChoices(choicesContainer, story, log, visited, onDone);
+  }
+
+  // Fallout-style dialogue box: picking a choice replaces the displayed text
+  // rather than appending to a running log (pacing handled by revealNext).
+  function advance(story, log, choicesContainer, visited, onDone) {
+    revealNext(story, log, choicesContainer, visited, onDone);
   }
 
   function mount(root, inkUrl) {

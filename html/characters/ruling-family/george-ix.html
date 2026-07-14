@@ -25,4 +25,23 @@
     <li>Weekends: no real day off, but lighter office hours.</li>
     <li>Otherwise follows the <a href="../index.html">shared daily rhythm</a>.</li>
   </ul>
+
+  <h2 class="file-title" style="font-size:16px; margin-top:28px;">Cutscene &mdash; Arrival at Vault 23</h2>
+  <div id="clyde-overseer-arrival" class="dlg-widget"></div>
+
+  <h2 class="file-title" style="font-size:16px; margin-top:28px;">Dialogue &mdash; First Meeting</h2>
+  <div id="overseer-first-meeting" class="dlg-widget"></div>
 </div>
+
+<script src="../../../assets/vendor/ink-full.js"></script>
+<script src="../../../assets/dialogue-player.js"></script>
+<script>
+  VaultDialogue.mount(
+    document.getElementById("clyde-overseer-arrival"),
+    "../../../project-notes/dialogue/clyde-overseer-arrival.ink"
+  );
+  VaultDialogue.mount(
+    document.getElementById("overseer-first-meeting"),
+    "../../../project-notes/dialogue/overseer-first-meeting.ink"
+  );
+</script>
