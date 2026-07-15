@@ -11,7 +11,9 @@ Overseer George IX: How can I help you?
 + [Why don't you let in any outsiders?] 
     Overseer George IX: Outsiders are a threat to the safety of this vault. I can't risk my family's safety by letting in strangers.
     -> topic_menu
-+ [How is life in the vault?] -> life_in_vault
++ [How is life in the vault?] 
+    Overseer George IX: Life in the vault is good. We have everything we need, and we are safe from the dangers of the wasteland.
+    -> life_in_vault
 + [Goodbye.]
     Overseer George IX: Goodbye.
     -> END
@@ -21,6 +23,9 @@ Overseer George IX: I'm George IX, son of George VIII and descendant of George I
 + [How long have you been Overseer?]
     Overseer George IX: I became Overseer when my father died, 20 years ago.
     -> who_are_you
++ [Why are you the ninth George?]
+    Overseer George IX: The eldest son of my line has always been named George. It's a symbol of the power in our bloodline.
+    -> george_lineage_menu
 + [George the Ninth? Could your mom not come up with a better name?]
     Overseer George IX: The eldest son of my line has always been named George. It's a symbol of the power in our bloodline.
     -> george_lineage_menu
@@ -29,7 +34,7 @@ Overseer George IX: I'm George IX, son of George VIII and descendant of George I
     -> topic_menu
 
 === george_lineage_menu ===
-+ [What is your bloodline?]
++ [Who started your bloodline?]
     We are the descendants of George Kingsley, the first Overseer of this vault.
     -> george_lineage_menu
 + [What do you mean the power in your bloodline?]
@@ -70,7 +75,6 @@ Overseer George IX: I'm George IX, son of George VIII and descendant of George I
     -> topic_menu
 
 === life_in_vault ===
-Overseer George IX: Life in the vault is good. We have everything we need, and we are safe from the dangers of the wasteland.
 + [What do you eat?]
     Overseer George IX: We have a hydroponics lab we use to grow crops, as well as stores of prewar food. We also have a water purification system that provides us with clean drinking water.
     -> life_in_vault
