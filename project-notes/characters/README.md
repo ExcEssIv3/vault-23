@@ -1,6 +1,6 @@
 # Vault 23 — Character Files
 
-One file per named resident, tracking operational detail: schedule now, voice lines later. Personality, backstory, and relationships live in [../characters.md](../characters.md) — these files are the day-to-day layer on top of that: where someone is, and when. Room/level references are in [../vault-layout.md](../vault-layout.md).
+One directory per named resident, tracking operational detail: schedule now, voice lines later. Each holds a `<name>.md` file and, for residents with a written scene, a `dialogue/` subdirectory of playable Ink files. Personality, backstory, and relationships live in [../characters.md](../characters.md) — these files are the day-to-day layer on top of that: where someone is, and when. Room/level references are in [../vault-layout.md](../vault-layout.md).
 
 ## Directory
 
