@@ -494,7 +494,7 @@
 .dlg-portrait {
   border: 1px solid var(--rule);
   border-radius: 4px;
-  background: var(--paper);
+  background: var(--paper) url("portraits/background.png") center / cover no-repeat;
   overflow: hidden;
   margin-bottom: 12px;
 }
