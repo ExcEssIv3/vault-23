@@ -10,7 +10,7 @@ Grouped the same way as [../characters.md](../characters.md), plus a `misc/` cat
 - `enforcement/` — Walter, Edgar, Thomas
 - `medical/` — Silas, Teresa
 - `kitchen/` — Haley, Elias, Constance
-- `misc/` — Phil, Amos, Prudence, Caleb, Agnes, Mabel, Clyde
+- `misc/` — Phil, Amos, Prudence, Caleb, Agnes, Mabel, Clyde, Wendell, Hazel
 - `school/` — all 14 named children
 
 ## Shared daily rhythm

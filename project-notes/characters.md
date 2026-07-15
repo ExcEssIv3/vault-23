@@ -53,6 +53,8 @@ Built bottom-up from working roles and who they're married to, rather than a top
 - Caleb — water treatment.
 - Agnes — janitor.
 - Clyde — janitor.
+- Wendell — hydroponics.
+- Hazel — hydroponics.
 
 **Families**
 - George IX & Rebecca — parents of George X. Level 1, Overseer's quarters.
@@ -64,5 +66,6 @@ Built bottom-up from working roles and who they're married to, rather than a top
 
 **Elderly**
 - Mabel — widowed, lives alone in her own unit, not working. Unofficial keeper of the vault's hand-written family journals in the library — one of the few residents whose memory of the family's history reaches back further than anyone else living.
+- Hazel — also older and unmarried, like Mabel, but still working: staffs the hydroponics lab alongside Wendell.
 
-That's 19 named adults across 5 married households (Walter+Teresa, Edgar+Haley, Thomas+Agnes, Elias+Constance, Amos+Prudence, totaling 14 children) plus 6 unmarried adults (George X, Silas, Phil, Caleb, Mabel, Clyde) and the ruling couple. Each married couple or unmarried adult has their own housing unit (see [vault-layout.md](vault-layout.md)) — Clyde's Vault 23 unit sits empty unless/until he actually returns. Other elderly relatives and unnamed background dwellers still need to be layered on top of this.
+That's 21 named adults across 5 married households (Walter+Teresa, Edgar+Haley, Thomas+Agnes, Elias+Constance, Amos+Prudence, totaling 14 children) plus 8 unmarried adults (George X, Silas, Phil, Caleb, Mabel, Clyde, Wendell, Hazel) and the ruling couple. Each married couple or unmarried adult has their own housing unit (see [vault-layout.md](vault-layout.md)) — Clyde's Vault 23 unit sits empty unless/until he actually returns. Other elderly relatives and unnamed background dwellers still need to be layered on top of this.

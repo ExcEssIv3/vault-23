@@ -31,6 +31,9 @@
 
   <h2 class="file-title" style="font-size:16px; margin-top:28px;">Dialogue &mdash; First Meeting</h2>
   <div id="overseer-first-meeting" class="dlg-widget"></div>
+
+  <h2 class="file-title" style="font-size:16px; margin-top:28px;">Dialogue &mdash; Generic (any time)</h2>
+  <div id="overseer-generic" class="dlg-widget"></div>
 </div>
 
 <script src="../../../assets/vendor/ink-full.js"></script>
@@ -43,5 +46,9 @@
   VaultDialogue.mount(
     document.getElementById("overseer-first-meeting"),
     "../../../project-notes/dialogue/overseer-first-meeting.ink"
+  );
+  VaultDialogue.mount(
+    document.getElementById("overseer-generic"),
+    "../../../project-notes/dialogue/overseer-generic.ink"
   );
 </script>
