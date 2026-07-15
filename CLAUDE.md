@@ -16,7 +16,7 @@ All source documents live in `project-notes/`; the repo root only holds the gene
 - `project-notes/epilogues.md` — post-credits slideshow per ending
 - `project-notes/open-questions.md` — open questions / next to flesh out
 - `index.html` — single-file, dependency-free HTML rendering of the outline (styled as a Vault-Tec case file), styled via `assets/vault.css`. Opens directly in any browser, no build step; also served live via GitHub Pages at the repo root.
-- `html/characters/` — one generated HTML page per named resident, mirroring `project-notes/characters/`, linked from `index.html`. Pages with a written dialogue tree embed a playable widget (`assets/dialogue-player.js`) that fetches and runs the matching `.ink` file client-side via the vendored [inkjs](https://github.com/y-lohse/inkjs) runtime (`assets/vendor/ink-full.js`) — no build step, no server.
+- `html/characters/` — one generated HTML page per named resident, mirroring `project-notes/characters/`, linked from `index.html`. Pages with a written dialogue tree embed a playable widget (`assets/dialogue-player.js`) that fetches and runs the matching `.ink` file client-side via the vendored [inkjs](https://github.com/y-lohse/inkjs) runtime (`assets/vendor/ink-full.js`) — no build step, no server. The widget optionally takes a `portraits` option (keyed by the exact speaker label used in the `.ink` source) mapping to `{ closed, open, blink }` frame paths under `assets/portraits/<character-key>/`; it Fallout-1/2-style sprite-swaps the mouth while a line is "talking" (duration estimated from text length, no audio yet) and blinks on an idle timer. Missing portrait images fail silently, so pages can reference the convention ahead of the art existing.
 
 ## Conventions
 

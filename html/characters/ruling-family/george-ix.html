@@ -39,16 +39,40 @@
 <script src="../../../assets/vendor/ink-full.js"></script>
 <script src="../../../assets/dialogue-player.js"></script>
 <script>
+  // Portrait art doesn't exist yet — missing images just hide the portrait
+  // pane, so these paths are safe to wire up ahead of time. Drop
+  // closed/open/blink PNGs in the referenced folders to activate them.
+  var overseerPortrait = {
+    closed: "../../../assets/portraits/george-ix/closed.png",
+    open: "../../../assets/portraits/george-ix/open.png",
+    blink: "../../../assets/portraits/george-ix/blink.png"
+  };
+  var clydePortrait = {
+    closed: "../../../assets/portraits/clyde/closed.png",
+    open: "../../../assets/portraits/clyde/open.png",
+    blink: "../../../assets/portraits/clyde/blink.png"
+  };
+  // "Overseer" (arrival cutscene) and "Overseer George IX" (first-meeting,
+  // generic) are the same character under two different speaker labels.
+  var portraits = {
+    "Overseer": overseerPortrait,
+    "Overseer George IX": overseerPortrait,
+    "Clyde": clydePortrait
+  };
+
   VaultDialogue.mount(
     document.getElementById("clyde-overseer-arrival"),
-    "../../../project-notes/characters/ruling-family/george-ix/dialogue/clyde-overseer-arrival.ink"
+    "../../../project-notes/characters/ruling-family/george-ix/dialogue/clyde-overseer-arrival.ink",
+    { portraits: portraits }
   );
   VaultDialogue.mount(
     document.getElementById("overseer-first-meeting"),
-    "../../../project-notes/characters/ruling-family/george-ix/dialogue/overseer-first-meeting.ink"
+    "../../../project-notes/characters/ruling-family/george-ix/dialogue/overseer-first-meeting.ink",
+    { portraits: portraits }
   );
   VaultDialogue.mount(
     document.getElementById("overseer-generic"),
-    "../../../project-notes/characters/ruling-family/george-ix/dialogue/overseer-generic.ink"
+    "../../../project-notes/characters/ruling-family/george-ix/dialogue/overseer-generic.ink",
+    { portraits: portraits }
   );
 </script>

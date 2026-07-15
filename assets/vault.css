@@ -486,6 +486,25 @@
   max-width: 68ch;
 }
 
+.dlg-top-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.dlg-portrait {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.dlg-portrait-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .dlg-log {
   max-height: 360px;
   overflow-y: auto;
