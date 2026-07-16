@@ -486,6 +486,34 @@
   max-width: 68ch;
 }
 
+.dlg-select-wrap {
+  max-width: 68ch;
+  margin-bottom: 12px;
+}
+
+.dlg-select {
+  width: 100%;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 13px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--tab-amber);
+  border-radius: 3px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.dlg-select:hover,
+.dlg-select:focus {
+  border-left-color: var(--seal-teal);
+  color: var(--seal-teal);
+  outline: none;
+}
+
 .dlg-top-row {
   display: flex;
   flex-direction: column;

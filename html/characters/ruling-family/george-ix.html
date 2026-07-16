@@ -26,14 +26,8 @@
     <li>Otherwise follows the <a href="../index.html">shared daily rhythm</a>.</li>
   </ul>
 
-  <h2 class="file-title" style="font-size:16px; margin-top:28px;">Cutscene &mdash; Arrival at Vault 23</h2>
-  <div id="clyde-overseer-arrival" class="dlg-widget"></div>
-
-  <h2 class="file-title" style="font-size:16px; margin-top:28px;">Dialogue &mdash; First Meeting</h2>
-  <div id="overseer-first-meeting" class="dlg-widget"></div>
-
-  <h2 class="file-title" style="font-size:16px; margin-top:28px;">Dialogue &mdash; Generic (any time)</h2>
-  <div id="overseer-generic" class="dlg-widget"></div>
+  <h2 class="file-title" style="font-size:16px; margin-top:28px;">Dialogue</h2>
+  <div id="george-ix-dialogue"></div>
 </div>
 
 <script src="../../../assets/vendor/ink-full.js"></script>
@@ -60,19 +54,21 @@
     "Clyde": clydePortrait
   };
 
-  VaultDialogue.mount(
-    document.getElementById("clyde-overseer-arrival"),
-    "../../../project-notes/characters/ruling-family/george-ix/dialogue/clyde-overseer-arrival.ink",
-    { portraits: portraits }
-  );
-  VaultDialogue.mount(
-    document.getElementById("overseer-first-meeting"),
-    "../../../project-notes/characters/ruling-family/george-ix/dialogue/overseer-first-meeting.ink",
-    { portraits: portraits }
-  );
-  VaultDialogue.mount(
-    document.getElementById("overseer-generic"),
-    "../../../project-notes/characters/ruling-family/george-ix/dialogue/overseer-generic.ink",
-    { portraits: portraits }
-  );
+  VaultDialogue.mountSelectable(document.getElementById("george-ix-dialogue"), [
+    {
+      label: "Cutscene — Arrival at Vault 23",
+      url: "../../../project-notes/characters/ruling-family/george-ix/dialogue/clyde-overseer-arrival.ink",
+      portraits: portraits
+    },
+    {
+      label: "Dialogue — First Meeting",
+      url: "../../../project-notes/characters/ruling-family/george-ix/dialogue/overseer-first-meeting.ink",
+      portraits: portraits
+    },
+    {
+      label: "Dialogue — Generic (any time)",
+      url: "../../../project-notes/characters/ruling-family/george-ix/dialogue/overseer-generic.ink",
+      portraits: portraits
+    }
+  ]);
 </script>

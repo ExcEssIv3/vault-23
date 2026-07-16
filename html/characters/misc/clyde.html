@@ -32,11 +32,8 @@
     <li>Otherwise follows the <a href="../index.html">shared daily rhythm</a>.</li>
   </ul>
 
-  <h2 class="file-title" style="font-size:16px; margin-top:28px;">Dialogue &mdash; Vault 21 (unresolved state)</h2>
-  <div id="clyde-dialogue" class="dlg-widget"></div>
-
-  <h2 class="file-title" style="font-size:16px; margin-top:28px;">Cutscene &mdash; Arrival at Vault 23</h2>
-  <div id="clyde-overseer-arrival" class="dlg-widget"></div>
+  <h2 class="file-title" style="font-size:16px; margin-top:28px;">Dialogue</h2>
+  <div id="clyde-dialogue-selector"></div>
 </div>
 
 <script src="../../../assets/vendor/ink-full.js"></script>
@@ -57,14 +54,16 @@
   };
   var portraits = { "Clyde": clydePortrait, "Overseer": overseerPortrait };
 
-  VaultDialogue.mount(
-    document.getElementById("clyde-dialogue"),
-    "../../../project-notes/characters/misc/clyde/dialogue/clyde-vault21.ink",
-    { portraits: portraits }
-  );
-  VaultDialogue.mount(
-    document.getElementById("clyde-overseer-arrival"),
-    "../../../project-notes/characters/misc/clyde/dialogue/clyde-overseer-arrival.ink",
-    { portraits: portraits }
-  );
+  VaultDialogue.mountSelectable(document.getElementById("clyde-dialogue-selector"), [
+    {
+      label: "Dialogue — Vault 21 (unresolved state)",
+      url: "../../../project-notes/characters/misc/clyde/dialogue/clyde-vault21.ink",
+      portraits: portraits
+    },
+    {
+      label: "Cutscene — Arrival at Vault 23",
+      url: "../../../project-notes/characters/misc/clyde/dialogue/clyde-overseer-arrival.ink",
+      portraits: portraits
+    }
+  ]);
 </script>

@@ -218,8 +218,14 @@
     revealNext(story, log, choicesContainer, visited, onDone, animator);
   }
 
+  // Mounts one dialogue tree into root. Returns a handle with stop() to tear
+  // down timers/animation \u2014 callers that swap the mounted tree out (e.g. the
+  // dropdown selector below) must call it before mounting another, since
+  // fetch/timers otherwise keep running against a detached widget.
   function mount(root, inkUrl, options) {
     options = options || {};
+    var cancelled = false;
+    var animator = null;
     root.innerHTML = "";
     var loading = document.createElement("p");
     loading.className = "dlg-line dlg-loading";
@@ -232,6 +238,7 @@
         return res.text();
       })
       .then(function (source) {
+        if (cancelled) return;
         var compiler = new inkjs.Compiler(source);
         var story = compiler.Compile();
         var visited = new Set();
@@ -240,7 +247,7 @@
         var topRow = document.createElement("div");
         topRow.className = "dlg-top-row";
         var portrait = createPortraitPane();
-        var animator = new PortraitAnimator(options.portraits, portrait.wrap, portrait.img);
+        animator = new PortraitAnimator(options.portraits, portrait.wrap, portrait.img);
         var log = document.createElement("div");
         log.className = "dlg-log";
         var choicesContainer = document.createElement("div");
@@ -267,13 +274,58 @@
         advance(story, log, choicesContainer, visited, null, animator);
       })
       .catch(function (err) {
+        if (cancelled) return;
         root.innerHTML = "";
         var errEl = document.createElement("p");
         errEl.className = "dlg-line dlg-error";
         errEl.textContent = "Dialogue failed to load: " + err.message;
         root.appendChild(errEl);
       });
+
+    return {
+      stop: function () {
+        cancelled = true;
+        if (animator) animator.stop();
+      }
+    };
   }
 
-  window.VaultDialogue = { mount: mount };
+  // Renders a dropdown of dialogue contexts plus a single widget area, so
+  // only one tree is ever live on screen at a time. entries is
+  // [{ label, url, portraits }, ...]; the first entry mounts by default.
+  function mountSelectable(root, entries) {
+    root.innerHTML = "";
+    var wrap = document.createElement("div");
+    wrap.className = "dlg-select-wrap";
+    var select = document.createElement("select");
+    select.className = "dlg-select";
+    entries.forEach(function (entry, i) {
+      var opt = document.createElement("option");
+      opt.value = String(i);
+      opt.textContent = entry.label;
+      select.appendChild(opt);
+    });
+    wrap.appendChild(select);
+
+    var target = document.createElement("div");
+    target.className = "dlg-widget";
+
+    root.appendChild(wrap);
+    root.appendChild(target);
+
+    var current = null;
+    function show(index) {
+      if (current) current.stop();
+      var entry = entries[index];
+      current = mount(target, entry.url, { portraits: entry.portraits });
+    }
+
+    select.addEventListener("change", function () {
+      show(Number(select.value));
+    });
+
+    show(0);
+  }
+
+  window.VaultDialogue = { mount: mount, mountSelectable: mountSelectable };
 })();
